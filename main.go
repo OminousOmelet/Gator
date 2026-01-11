@@ -4,7 +4,11 @@ import (
 	"log"
 	"os"
 
+	"database/sql"
+
 	"github.com/OminousOmelet/Gator/internal/config"
+	"github.com/OminousOmelet/Gator/internal/database"
+	_ "github.com/lib/pq"
 )
 
 func main() {
@@ -12,17 +16,18 @@ func main() {
 	//log.SetFlags(0)
 
 	cfg, err := config.Read()
-	// db, err := sql.Open("postgres", cfg.DbURL)
-	// if err != nil {
-	// 	log.Fatalf("error connecting to database: %v", err)
-	// }
+	db, err := sql.Open("postgres", cfg.DbURL)
+	if err != nil {
+		log.Fatalf("error connecting to database: %v", err)
+	}
 
 	//dbQueries := database.New(db)
-	gatorState := state{cfg}
+	gatorState := state{database.New(db), cfg}
 
 	cmds := commands{commandNames: make(map[string]func(*state, command) error)}
 	cmds.register("login", handlerLogin)
-	//cmds.register("register", handlerRegister)
+	cmds.register("register", handlerRegister)
+	cmds.register("reset", reset)
 	if len(os.Args) < 2 {
 		log.Fatal("Usage: cli <command> [args...]")
 	}
