@@ -1,36 +1,39 @@
 package main
 
 import (
-	"Gator/internal/config"
-	"fmt"
+	"log"
 	"os"
+
+	"github.com/OminousOmelet/Gator/internal/config"
 )
 
 func main() {
+	// Removes timestamp from error messages
+	//log.SetFlags(0)
+
 	cfg, err := config.Read()
-	cfgState := state{cfg}
+	// db, err := sql.Open("postgres", cfg.DbURL)
+	// if err != nil {
+	// 	log.Fatalf("error connecting to database: %v", err)
+	// }
+
+	//dbQueries := database.New(db)
+	gatorState := state{cfg}
 
 	cmds := commands{commandNames: make(map[string]func(*state, command) error)}
 	cmds.register("login", handlerLogin)
+	//cmds.register("register", handlerRegister)
 	if len(os.Args) < 2 {
-		fmt.Println("too few arguments passed, exiting program")
-		os.Exit(1)
+		log.Fatal("Usage: cli <command> [args...]")
 	}
 
 	_, exists := cmds.commandNames[os.Args[1]]
 	if !exists {
-		fmt.Println("invalid command")
-		os.Exit(1)
+		log.Fatal("invalid command")
 	}
 
-	if os.Args[1] == "login" && len(os.Args) < 3 {
-		fmt.Println("must provide a username")
-		os.Exit(1)
-	}
-
-	err = cmds.run(&cfgState, command{name: os.Args[1], arguments: os.Args[2:]})
+	err = cmds.run(&gatorState, command{name: os.Args[1], arguments: os.Args[2:]})
 	if err != nil {
-		fmt.Println(err)
+		log.Fatal(err)
 	}
-
 }
