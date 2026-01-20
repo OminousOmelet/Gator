@@ -7,4 +7,4 @@ name TEXT UNIQUE NOT NULL
 );
 
 -- +goose Down
-DROP TABLE users CASCADE;
+DROP TABLE IF EXISTS users;
