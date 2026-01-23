@@ -10,13 +10,12 @@
     "current_user_name": ""
   }
 - Replace 'username' and 'password' with your Postgres credentials. Leave current user blank.
-- from root, create a 'gator' directory, then navigate to it
-- type the command 'go install github.com/OminousOmelet/gator'
+- install Gator with the command 'go install github.com/OminousOmelet/gator@latest'
 
 --COMMANDS--
-'register'  - creates a new user
-'login'     - set the current user
-'addfeed'   - add a feed to the database
-'follow'    - follow a specific feed in the database
-'agg'       - aggregates the added feeds, posting their contents to the database
-'browse'    - read contents of the posts
+- 'register'  - creates a new user  
+- 'login'     - set the current user  
+- 'addfeed'   - add a feed to the database  
+- 'follow'    - follow a specific feed in the database  
+- 'agg'       - aggregates the added feeds, posting their contents to the database  
+- 'browse'    - read contents of the posts
