@@ -1,4 +1,4 @@
-module github.com/OminousOmelet/Gator
+module github.com/OminousOmelet/gator
 
 go 1.25.4
 
