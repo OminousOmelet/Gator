@@ -4,11 +4,11 @@
 --INSTALLATION (Linux)--
 - Ensure that you have the latest version of Golang and Postgres installed
 - in Postgres, create a new database called 'gator'
-- In root, create a new json file named '.gatorconfig.json' and write in the following:
-  {
-    "db_url": "postgres://username:password@localhost:5432/gator?sslmode=disable",
-    "current_user_name": ""
-  }
+- In root, create a new json file named '.gatorconfig.json' and write in the following:  
+  {  
+    "db_url": "postgres://username:password@localhost:5432/gator?sslmode=disable",  
+    "current_user_name": ""  
+  }  
 - Replace 'username' and 'password' with your Postgres credentials. Leave current user blank.
 - install Gator with the command 'go install github.com/OminousOmelet/gator@latest'
 
