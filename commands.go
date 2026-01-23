@@ -12,6 +12,7 @@ import (
 
 	"github.com/OminousOmelet/gator/internal/database"
 	"github.com/google/uuid"
+	_ "github.com/lib/pq"
 )
 
 // Pfffffffffffffff
