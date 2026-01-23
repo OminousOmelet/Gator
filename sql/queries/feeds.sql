@@ -13,3 +13,13 @@ WHERE url = $1;
 SELECT feeds.name, feeds.url, users.name as user
 FROM feeds
 INNER JOIN users ON feeds.user_id = users.id;
+
+-- name: MarkFeedFetched :exec
+UPDATE feeds
+SET last_fetched = CURRENT_TIMESTAMP
+WHERE feeds.id = $1;
+
+-- name: GetNextFeedToFetch :one
+SELECT DISTINCT ON (last_fetched) *
+FROM feeds
+ORDER BY last_fetched ASC NULLS FIRST;
