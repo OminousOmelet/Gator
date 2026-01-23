@@ -6,8 +6,8 @@ import (
 
 	"database/sql"
 
-	"github.com/OminousOmelet/Gator/internal/config"
-	"github.com/OminousOmelet/Gator/internal/database"
+	"github.com/OminousOmelet/gator/internal/config"
+	"github.com/OminousOmelet/gator/internal/database"
 	_ "github.com/lib/pq"
 )
 
