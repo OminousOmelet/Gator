@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/OminousOmelet/Gator/internal/database"
+	"github.com/OminousOmelet/gator/internal/database"
 )
 
 func handlerFollow(s *state, cmd command, user database.User) error {

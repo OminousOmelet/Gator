@@ -10,7 +10,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/OminousOmelet/Gator/internal/database"
+	"github.com/OminousOmelet/gator/internal/database"
 	"github.com/google/uuid"
 )
 
