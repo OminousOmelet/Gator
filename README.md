@@ -9,9 +9,9 @@
     "db_url": "postgres://username:password@localhost:5432/gator?sslmode=disable",
     "current_user_name": ""
   }
-- Replace 'username' and 'password' with your Postgres credentials.
-- The current user will be set by the program
-- install Gator with the command 'go install https://github.com/OminousOmelet/gator@latest'
+- Replace 'username' and 'password' with your Postgres credentials. Leave current user blank.
+- from root, create a 'gator' directory, then navigate to it
+- type the command 'go install github.com/OminousOmelet/gator'
 
 --COMMANDS--
 'register'  - creates a new user
